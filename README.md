@@ -13,7 +13,9 @@
 ## 运行项目
 ```shell
 # 克隆项目
-git colne https://github.com/super-upup/98tang
+git clone https://github.com/super-upup/98tang
+# 切换到目录
+cd 98tang
 # 安装依赖
 npm i
 # 运行项目
