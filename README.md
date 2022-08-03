@@ -10,6 +10,16 @@
 - 请勿设置双重验证，因为双重验证每次登录码不一样，无法完成自动签到
 - 没有设置密保问题对应选项应留空
 
+## 运行项目
+```shell
+# 克隆项目
+git colne https://github.com/super-upup/98tang
+# 安装依赖
+npm i
+# 运行项目
+npm run serve
+```
+
 ## API接口如下
 
 ### 提交每日签到任务
