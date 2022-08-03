@@ -38,7 +38,7 @@ npm run serve
 | ------------ | ----------------------------------------------------------- |
 | method       | POST                                                        |
 | Content-Type | application/x-www-form-urlencoded                           |
-| data         | username=用户名&pwd=密码&skip=跳过条数&limit=一次性获取条数 |
+| data         | username=用户名&pwd=密码&skip=跳过条数&limit=一次获取条数 |
 
 返回10位时间戳请自行转化为可读性日期
 
