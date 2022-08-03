@@ -30,7 +30,7 @@ npm run serve
 | ------------ | ------------------------------------------------------------ |
 | method       | POST                                                         |
 | Content-Type | application/x-www-form-urlencoded                            |
-| data         | username=用户名&pwd=密码&questionid=母亲的名字：1，爷爷的名字2，以此类推&answer=密保答案 |
+| data         | username=用户名&pwd=密码&questionid=母亲的名字：1，爷爷的名字：2，以此类推&answer=密保答案 |
 
 ### 查看自动签到历史
 
