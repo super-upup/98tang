@@ -3,7 +3,7 @@
 ## 作者搭建好的（更新时间2023年5月）
 http://www.superupup.top
 
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://github.com/super-upup/98tang/edit/master/readme/login-history.png)
 5月测试是稳定的，如果特殊情况没有每日签到的话，请到Issue提问。
 
 ## 功能介绍
