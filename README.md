@@ -1,8 +1,8 @@
 # 98tang/98堂自动签到系统
 
 ## 作者搭建好的（更新时间2023年5月）
-## 服务器昂贵，给个star、fork是我维护的动力！！
 http://www.superupup.top
+**服务器昂贵，给个star、fork是我维护的动力！！**
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 5月测试是稳定的，如果特殊情况没有每日签到的话，请到Issue提问。
