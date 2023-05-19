@@ -3,10 +3,10 @@
 ## 作者搭建好的（更新时间2023年5月）
 http://www.superupup.top
 
+**服务器昂贵，给个star、fork是我维护的动力！！**
+
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 5月测试是稳定的，如果特殊情况没有每日签到的话，请到Issue提问。
-
-为使网站可持续运行，网站会在登录页面征得号主的同意后，使用部分评分（无封号风险），同意后续可提供自动加积分提升用户组功能。
 
 ## 功能介绍
 
