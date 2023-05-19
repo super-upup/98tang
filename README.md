@@ -5,6 +5,7 @@ http://www.superupup.top
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 5月测试是稳定的，如果特殊情况没有每日签到的话，请到Issue提问。
+
 为使网站可持续运行，可能会在签到同时使用号主部分评分（无封号风险），介意者勿用。
 
 ## 功能介绍
