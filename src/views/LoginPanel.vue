@@ -9,13 +9,18 @@
 
     <div class="login-panel">
       <div @click="goGithub" class="github">
-        <img
-          style="height: 35px; width: 35px"
-          alt="github"
-          src="@/assets/github.svg"
-        />
-        <div style="white-space: nowrap; font-size: 14px; margin-top: 3px">
-          源码
+        <div style="font-size: 12px; color: grey; margin-right: 20px">
+          到github上Fork和Star就是我维护的动力
+        </div>
+        <div>
+          <img
+            style="height: 35px; width: 35px"
+            alt="github"
+            src="@/assets/github.svg"
+          />
+          <div style="white-space: nowrap; font-size: 14px; margin-top: 3px">
+            源码
+          </div>
         </div>
       </div>
 
@@ -161,12 +166,12 @@ export default {
   position: absolute;
   right: 23px;
   top: 23px;
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
+  /* width: 37px;
+  height: 37px; */
+  /* border-radius: 50%; */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* flex-direction: column;
+  justify-content: center; */
   align-items: center;
 }
 
