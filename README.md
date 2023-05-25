@@ -6,7 +6,7 @@ http://www.superupup.top
 **服务器昂贵，给个star、fork是我维护的动力！！**
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
-已经稳定运行9个月，如果特殊情况，请到Issue提问。
+已经稳定运行**9**个月，如果特殊情况，请到Issue提问。
 
 ## 功能介绍
 
