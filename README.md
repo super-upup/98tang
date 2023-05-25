@@ -30,7 +30,7 @@ npm i
 npm run serve
 ```
 
-## API接口如下
+## API接口如下（不限制origin，可自行调用）
 
 ### 提交每日签到任务
 
