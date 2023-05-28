@@ -81,6 +81,7 @@
 
 <script>
 import request from "@/utils/request";
+import config from "@/config/config";
 // import { useStore } from "vuex";
 export default {
   name: "LoginPanel",
@@ -107,7 +108,7 @@ export default {
     // console.log(store);
 
     request
-      .get("http://superupup.top/98t/usersCount")
+      .get(`${config.baseUrl}/98t/usersCount`)
       .then((res) => {
         this.signCount = res.count;
       })
@@ -138,7 +139,7 @@ export default {
         })
       );
       request
-        .post("http://superupup.top/98t/commit", data)
+        .post(`${config.baseUrl}/98t/commit`, data)
         .then((res) => {
           // console.log(res);
           this.$router.push({
