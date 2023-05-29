@@ -22,7 +22,7 @@ http://www.superupup.top
 - 没有设置密保问题对应选项应留空
 
 ## 邀请码购买
-https://t.me/wytckx
+[https://t.me/wytckx](https://www.aseh.xyz/)
 
 ## 运行项目
 ```shell
