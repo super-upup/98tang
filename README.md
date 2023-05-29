@@ -7,6 +7,7 @@ http://www.superupup.top
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 已经稳定运行**9个月**，如果特殊情况，请到到tg反馈 https://t.me/super_upup 或者Issue提问。
+
 **邀请码购买：**https://www.aseh.xyz/
 ## 功能介绍
 
