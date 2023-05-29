@@ -1,5 +1,8 @@
 # 98tang/98堂自动签到系统
 
+## 邀请码购买
+[https://t.me/wytckx](https://www.aseh.xyz/)
+
 ## 作者搭建好的（更新时间2023年5月）
 http://www.superupup.top
 
@@ -20,9 +23,6 @@ http://www.superupup.top
 
 - 请勿设置双重验证，因为双重验证每次登录码不一样，无法完成自动签到
 - 没有设置密保问题对应选项应留空
-
-## 邀请码购买
-[https://t.me/wytckx](https://www.aseh.xyz/)
 
 ## 运行项目
 ```shell
