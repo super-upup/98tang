@@ -46,6 +46,14 @@ npm run serve
 | Content-Type | application/x-www-form-urlencoded                            |
 | data         | username=用户名&pwd=密码&questionid=母亲的名字填1，爷爷的名字填2（以此类推）&answer=密保答案 |
 
+### 更改自动升级状态
+
+| url          | http://www.superupup.top/98t/changeUpgrade                   |
+| ------------ | ------------------------------------------------------------ |
+| method       | POST                                                         |
+| Content-Type | application/x-www-form-urlencoded                            |
+| data         | username=用户名&pwd=密码&auto_upgrade=是否自动升级（填true或false） |
+
 ### 查看自动签到历史
 
 | URL          | http://www.superupup.top/98t/checkStatus                          |
