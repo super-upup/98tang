@@ -3,7 +3,7 @@
 ## 作者搭建好的（更新时间2023年6月）
 http://www.superupup.top
 
-**服务器昂贵，给个star、fork是我维护的动力！！**
+**服务器昂贵，开发不易，给个star、fork是我维护的动力！！**
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 已经稳定运行**10个月**，如果特殊情况，请到到tg反馈 https://t.me/super_upup 。
