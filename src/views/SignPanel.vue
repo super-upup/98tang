@@ -1,7 +1,7 @@
 <template>
   <div class="menu">
     <a
-      >自动升级状态：
+      >自动升级：
       <el-button
         @click="changeUpgrade"
         size="small"

@@ -19,7 +19,7 @@
             src="@/assets/github.svg"
           />
           <div style="white-space: nowrap; font-size: 14px; margin-top: 3px">
-            源码
+            源码/说明
           </div>
         </div>
       </div>
