@@ -38,7 +38,7 @@ npm run serve
 ```
 
 ## 批量登录
-**比较复杂，耐心看完**
+**比较复杂，耐心看完**，实在不会的联系作者telegram：https://t.me/super_upup
 ### 1. 获取cookies
 <img src="https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step1.png" alt="Example Image" height="300px">
 
