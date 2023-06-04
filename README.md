@@ -38,8 +38,10 @@ npm run serve
 ```
 
 ## 批量登录
-
-
+![Image text](https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step1.png
+)
+![Image text](https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step2.png
+)
 
 
 ## API接口如下（不限制origin，可自行调用）
