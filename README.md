@@ -18,7 +18,7 @@ http://www.superupup.top
 - 安全可靠，首次登录成功，次日开始使用代理ip登录
 
 ## 待开发
-- cookies免密登录（只做批量，20个号以上的有需求联系telegram群免费开发）
+- 有需求联系telegram群免费开发
 
 ## 注意事项
 
