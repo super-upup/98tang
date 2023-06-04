@@ -46,6 +46,7 @@ npm run serve
 <img src="https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step2.png" alt="Example Image" height="300px">
 
 ### 3. 提交须知
+- 仅支持10~15个不同的号同时批量登录，如果最后一批不足10个号，可使用以前提交过的cookies。
 
 
 ## API接口如下（不限制origin，可自行调用）
