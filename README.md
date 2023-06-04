@@ -41,9 +41,11 @@ npm run serve
 **比较复杂，耐心看完**
 ### 1. 获取cookies
 <img src="https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step1.png" alt="Example Image" height="300px">
-### 1. 提交登录
+
+### 2. 提交登录
 <img src="https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step2.png" alt="Example Image" height="300px">
-### 1. 提交须知
+
+### 3. 提交须知
 
 
 ## API接口如下（不限制origin，可自行调用）
