@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ElMessageBox , ElMessage  } from 'element-plus'
+import { ElMessageBox, ElMessage } from 'element-plus'
 // import store from '@/store'
 // import { getToken } from '@/utils/auth'
 
@@ -7,7 +7,7 @@ import { ElMessageBox , ElMessage  } from 'element-plus'
 const service = axios.create({
     baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
-    timeout: 8000 // request timeout
+    timeout: 12000 // request timeout
 })
 
 // request interceptor

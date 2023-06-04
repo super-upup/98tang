@@ -35,6 +35,7 @@ export default {
   },
 
   mounted() {
+    document.title = "签到结果";
     this.user = JSON.parse(window.localStorage.getItem("user"));
     this.getSignLi();
     scroll.start(this.getSignLi);
@@ -87,7 +88,7 @@ export default {
           }
           if (sign_history.length < this.count) scroll.end();
           this.sign_history = this.sign_history.concat(sign_history);
-          this.auto_upgrade = res.auto_upgrade
+          this.auto_upgrade = res.auto_upgrade;
         })
         .finally(() => {
           this.loading = false;

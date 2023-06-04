@@ -3,7 +3,7 @@
 
   <div class="login-container">
     <div class="title">
-      <div class="name1">98tang自动签到系统</div>
+      <div class="name1">98堂自动签到系统</div>
       <div class="name2">98tang auto sign system</div>
     </div>
 
@@ -30,45 +30,72 @@
         fit="cover"
       ></el-image>
 
-      <div class="form" :model="form">
-        <el-input v-model="form.name" placeholder="用户名" />
-        <el-input
-          v-model="form.pwd"
-          type="password"
-          placeholder="密码"
-          show-password
-        />
-        <div class="mt-4">
-          <el-input
-            v-model="form.answer"
-            placeholder="选填"
-            class="input-with-select"
-          >
-            <template #prepend>
-              <el-select
-                v-model="form.questionId"
-                placeholder="密保问题"
-                style="width: 115px"
+      <el-tabs
+        style="margin: 33px 0 0 100px"
+        v-model="activeName"
+        class="demo-tabs"
+      >
+        <el-tab-pane label="常规登录" name="commonLogin">
+          <div class="form" :model="form">
+            <el-input v-model="form.name" placeholder="用户名" />
+            <el-input
+              v-model="form.pwd"
+              type="password"
+              placeholder="密码"
+              show-password
+            />
+            <div class="mt-4">
+              <el-input
+                v-model="form.answer"
+                placeholder="选填"
+                class="input-with-select"
               >
-                <el-option label="母亲的名字" value="1" />
-                <el-option label="爷爷的名字" value="2" />
-                <el-option label="父亲出生的城市" value="3" />
-                <el-option label="您其中一位老师的名字" value="4" />
-                <el-option label="您个人计算机的型号" value="5" />
-                <el-option label="您最喜欢的餐馆名称" value="6" />
-                <el-option label="驾驶执照最后四位数字" value="7" />
-              </el-select>
-            </template>
-          </el-input>
-        </div>
-        <el-button
-          :loading="loading"
-          @click="onSubmit"
-          class="login-btn"
-          type="primary"
-          >登录</el-button
-        >
-      </div>
+                <template #prepend>
+                  <el-select
+                    v-model="form.questionId"
+                    placeholder="密保问题"
+                    style="width: 115px"
+                  >
+                    <el-option label="母亲的名字" value="1" />
+                    <el-option label="爷爷的名字" value="2" />
+                    <el-option label="父亲出生的城市" value="3" />
+                    <el-option label="您其中一位老师的名字" value="4" />
+                    <el-option label="您个人计算机的型号" value="5" />
+                    <el-option label="您最喜欢的餐馆名称" value="6" />
+                    <el-option label="驾驶执照最后四位数字" value="7" />
+                  </el-select>
+                </template>
+              </el-input>
+            </div>
+            <el-button
+              :loading="loading"
+              @click="onSubmit"
+              class="login-btn"
+              type="primary"
+              >登录</el-button
+            >
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="cookies批量登录" name="cookiesLogin">
+          <div class="form">
+            <el-input
+              type="textarea"
+              v-model="cookiesStr"
+              placeholder="内容格式点github看说明"
+              :rows="7"
+              style="height: 156px"
+            />
+            <el-button
+              :loading="loading"
+              class="login-btn"
+              type="primary"
+              @click="onCookiesLogin"
+              >提交</el-button
+            >
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+
       <el-badge :max="999999" class="sign-count" :value="signCount">
         <el-button>昨日签到用户数</el-button>
       </el-badge>
@@ -82,6 +109,7 @@
 <script>
 import request from "@/utils/request";
 import config from "@/config/config";
+import { ElMessageBox } from "element-plus";
 // import { useStore } from "vuex";
 export default {
   name: "LoginPanel",
@@ -92,6 +120,8 @@ export default {
     return {
       loading: false,
       signCount: "",
+      activeName: "commonLogin",
+      cookiesStr: "",
       form: {
         name: "",
         pwd: "",
@@ -102,6 +132,8 @@ export default {
   },
 
   mounted() {
+    document.title = "98堂助手";
+
     // const store = useStore();
     // console.log(store);
     // store.commit('user/updateUname', 'Tom')
@@ -116,9 +148,30 @@ export default {
   },
 
   methods: {
+    onCookiesLogin() {
+      this.loading = true;
+      let data = new FormData();
+      data.append("cookies", this.cookiesStr);
+      request
+        .post(`${config.baseUrl}/98t/cookiesLogin`, data)
+        .then((res) => {
+          console.log(res);
+          ElMessageBox.alert(res.msg, res.title, {
+            confirmButtonText: "OK",
+            "show-close": false,
+          });
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+
     goGithub() {
       // 跳转到github
-      window.location.href = "https://github.com/super-upup/98tang";
+      if (this.activeName == "commonLogin")
+        window.open("https://github.com/super-upup/98tang");
+      else if (this.activeName == "cookiesLogin")
+        window.open("https://github.com/super-upup/98tang#批量登录");
     },
 
     onSubmit() {
@@ -188,7 +241,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 100px;
+  width: 300px;
 }
 
 .login-panel {
