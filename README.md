@@ -38,6 +38,8 @@ npm run serve
 ```
 
 ## 批量登录
+<img src="https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step2.png" alt="Example Image" width="30px">
+
 ![Image text](https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step1.png
 )
 ![Image text](https://github.com/super-upup/98tang/blob/master/readme/cookie_login_step2.png
