@@ -9,7 +9,6 @@ http://www.superupup.top
 
 已经稳定运行**10个月**，交流、问题反馈telegram群组：https://t.me/+HmtIgTw-CgxjZmE1
 
-**赞助商的邀请码购买**：https://www.aseh.xyz
 ## 功能介绍（各项功能已稳定—6月）
 
 - 登录成功以后每日自动登录签到
