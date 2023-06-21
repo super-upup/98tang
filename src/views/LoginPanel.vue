@@ -96,9 +96,9 @@
         </el-tab-pane>
       </el-tabs>
 
-      <el-badge :max="999999" class="sign-count" :value="signCount">
+      <!-- <el-badge :max="999999" class="sign-count" :value="signCount">
         <el-button>昨日签到用户数</el-button>
-      </el-badge>
+      </el-badge> -->
     </div>
   </div>
 
@@ -171,7 +171,7 @@ export default {
       if (this.activeName == "commonLogin")
         window.open("https://github.com/super-upup/98tang");
       else if (this.activeName == "cookiesLogin")
-        window.open("https://github.com/super-upup/98tang#批量登录");
+        window.open("https://github.com/super-upup/98tang#cookies批量登录");
     },
 
     onSubmit() {
