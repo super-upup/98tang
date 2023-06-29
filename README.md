@@ -7,8 +7,7 @@ http://www.superupup.top
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 
-已经稳定运行**10个月**，交流、问题反馈telegram群组：[https://t.me/+HmtIgTw-CgxjZmE1](https://t.me/+Tlk_FnFjr0I2MDNl)
-
+已经稳定运行**10个月**。
 ## 功能介绍（各项功能已稳定—6月）
 
 - 登录成功以后每日自动登录签到
