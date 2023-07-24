@@ -1,14 +1,14 @@
 # 98tang/98堂自动签到系统
 
-## 作者搭建好的（更新时间2023年6月）
+## 作者搭建好的（更新时间2023年7月）
 http://www.superupup.top
 
-**服务器昂贵，开发不易，给个star、fork是我维护的动力！！**
+**开发不易，给个star、fork是我维护的动力！！**
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 
 已经稳定运行**10个月**。
-## 功能介绍（各项功能已稳定—6月）
+## 功能介绍
 
 - 登录成功以后每日自动登录签到
 - ~~不定期升级到LV6用户组，LV6可获邀请码（已停用此功能）~~
