@@ -7,7 +7,6 @@ http://www.superupup.top
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
 
-已经稳定运行**10个月**。
 ## 功能介绍
 
 - 登录成功以后每日自动登录签到，随机回复一条帖子领金币，可用于购买站内资源
