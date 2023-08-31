@@ -30,8 +30,9 @@ cd 98tang
 npm i
 # 运行项目
 npm run serve
+```
 
-# 其他
+```shell
 # 编译
 npm run build
 ```
