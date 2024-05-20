@@ -1,5 +1,5 @@
 # 98tang/98堂自动签到系统
-# <span style="color:red"> 近期作者比較繁忙，論壇又更新頻繁，大家有好的辦法可以自動通過cloudfare5秒盾或想參與項目開發請聯繫https://t.me/script_xxx </span>
+<span style="color:red"> 近期作者比較繁忙，論壇又更新頻繁，大家有好的辦法可以自動通過cloudfare5秒盾或想參與項目開發請聯繫https://t.me/script_xxx </span>
 
 
 ## 作者搭建好的（更新时间2024年5月）
