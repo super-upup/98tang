@@ -1,5 +1,6 @@
 # 98tang/98堂自动签到系统
 <font color="red">近期作者比較繁忙，論壇又更新頻繁，大家有好的辦法可以自動通過cloudfare5秒盾或想參與項目開發請聯繫https://t.me/script_xxx</font>
+![近期作者比較繁忙，論壇又更新頻繁，大家有好的辦法可以自動通過cloudfare5秒盾或想參與項目開發請聯繫https://t.me/script_xxx](https://img.shields.io/badge/Red_Text-FF0000?style=flat-square)
 
 
 ## 作者搭建好的（更新时间2024年5月）
