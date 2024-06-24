@@ -95,7 +95,7 @@
           </div>
         </el-tab-pane>
       </el-tabs>
-
+            <el-button type="primary" plain class="sign-count"><a href="https://avhelper.com" target="_blank" style="text-decoration:none;" >点我人工找片</a></el-button>
       <!-- <el-badge :max="999999" class="sign-count" :value="signCount">
         <el-button>昨日签到用户数</el-button>
       </el-badge> -->
