@@ -23,6 +23,20 @@ import request from "@/utils/request";
 import scroll from "@/utils/scroll";
 import config from "@/config/config";
 export default {
+  metaInfo: {
+    title: "98堂签到",
+    meta: [
+      {
+        name: "description",
+        content:
+          "提供免费98堂签到服务，一次登录，自动签到。",
+      },
+      {
+        name: "keywords",
+        content: "98堂,色花堂,98tang,98堂签到",
+      },
+    ],
+  },
   data() {
     return {
       sign_history: [],
@@ -35,7 +49,7 @@ export default {
   },
 
   mounted() {
-    document.title = "签到结果";
+    // document.title = "签到结果";
     this.user = JSON.parse(window.localStorage.getItem("user"));
     this.getSignLi();
     scroll.start(this.getSignLi);

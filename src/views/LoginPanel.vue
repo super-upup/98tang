@@ -112,6 +112,20 @@ import config from "@/config/config";
 import { ElMessageBox } from "element-plus";
 // import { useStore } from "vuex";
 export default {
+  metaInfo: {
+    title: "98堂签到",
+    meta: [
+      {
+        name: "description",
+        content:
+          "提供免费98堂签到服务，一次登录，自动签到。",
+      },
+      {
+        name: "keywords",
+        content: "98堂,色花堂,98tang,98堂签到",
+      },
+    ],
+  },
   name: "LoginPanel",
   props: {
     msg: String,
@@ -132,7 +146,7 @@ export default {
   },
 
   mounted() {
-    document.title = "98堂助手";
+    // document.title = "98堂自动签到";
 
     // const store = useStore();
     // console.log(store);

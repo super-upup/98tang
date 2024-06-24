@@ -1,7 +1,17 @@
 const { defineConfig } = require('@vue/cli-service')
+const PreRenderSPAPlugin = require("prerender-spa-plugin-next");
+
+
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
+  configureWebpack: {
+    plugins: [
+      new PreRenderSPAPlugin({
+        routes: ["/", "/LoginPanel", '/SignPanel'],
+      })
+    ],
+  },
   // devServer: {
   //   proxy: {
   //     '/98t': {
@@ -11,5 +21,5 @@ module.exports = defineConfig({
   //     },
   //   },
   // },
-  publicPath: './'
+  // publicPath: '/'
 })
