@@ -5,6 +5,9 @@
 ## 作者搭建好的（更新时间2024年5月）
 http://www.superupup.top
 
+## 人工找片，人工女优识别
+https://avhelper.com
+
 **开发不易，给个star、fork是我维护的动力！！**
 
 ![Image text](https://raw.githubusercontent.com/super-upup/98tang/master/readme/login-history.png)
