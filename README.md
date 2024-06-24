@@ -1,9 +1,12 @@
 # 98tang/98堂自动签到系统
-### <font color="red">近期作者比較繁忙，論壇又更新頻繁，大家有好的辦法可以自動通過cloudfare5秒盾或想**參與項目開發**請聯繫https://t.me/script_xxx</font>
+### <font color="red">有問題提ISSUES，一般會回復。</font>
 
 
 ## 作者搭建好的（更新时间2024年5月）
 http://www.superupup.top
+
+## 人工找片，人工女优识别
+https://avhelper.com
 
 **开发不易，给个star、fork是我维护的动力！！**
 
