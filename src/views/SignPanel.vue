@@ -64,7 +64,7 @@ export default {
       data.append("pwd", this.user.pwd);
       data.append("auto_upgrade", !this.auto_upgrade);
       request
-        .post(`${config.baseUrl}/98t/changeUpgrade`, data)
+        .post(`/98t/changeUpgrade`, data)
         .then((res) => {
           this.auto_upgrade = res.auto_upgrade;
         })
@@ -86,7 +86,7 @@ export default {
       data.append("skip", this.sign_history.length);
       data.append("limit", this.count);
       request
-        .post(`${config.baseUrl}/98t/checkStatus`, data)
+        .post(`/98t/checkStatus`, data)
         .then((res) => {
           const sign_history = res.sign_history;
           for (let i = 0, len = sign_history.length; i < len; i++) {

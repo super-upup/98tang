@@ -154,7 +154,7 @@ export default {
     // console.log(store);
 
     request
-      .get(`${config.baseUrl}/98t/usersCount`)
+      .get(`/98t/usersCount`)
       .then((res) => {
         this.signCount = res.count;
       })
@@ -167,7 +167,7 @@ export default {
       let data = new FormData();
       data.append("cookies", this.cookiesStr);
       request
-        .post(`${config.baseUrl}/98t/cookiesLogin`, data)
+        .post(`/98t/cookiesLogin`, data)
         .then((res) => {
           console.log(res);
           ElMessageBox.alert(res.msg, res.title, {
@@ -206,7 +206,7 @@ export default {
         })
       );
       request
-        .post(`${config.baseUrl}/98t/commit`, data)
+        .post(`/98t/commit`, data)
         .then((res) => {
           // console.log(res);
           this.$router.push({
