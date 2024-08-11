@@ -29,11 +29,11 @@ export default {
       {
         name: "description",
         content:
-          "提供免费98堂签到服务，一次登录，自动签到。",
+          "提供免费98堂签到、女优识别、找番号服务。",
       },
       {
         name: "keywords",
-        content: "98堂,色花堂,98tang,98堂签到",
+        content: "女优识别,98堂签到",
       },
     ],
   },
