@@ -13,49 +13,24 @@
           到github上Fork和Star就是我维护的动力
         </div>
         <div>
-          <img
-            style="height: 35px; width: 35px"
-            alt="github"
-            src="@/assets/github.svg"
-          />
+          <img style="height: 35px; width: 35px" alt="github" src="@/assets/github.svg" />
           <div style="white-space: nowrap; font-size: 14px; margin-top: 3px">
             源码/说明
           </div>
         </div>
       </div>
 
-      <el-image
-        style="width: 320px; height: 320px"
-        :src="require('@/assets/decorate.png')"
-        fit="cover"
-      ></el-image>
+      <el-image style="width: 320px; height: 320px" :src="require('@/assets/decorate.png')" fit="cover"></el-image>
 
-      <el-tabs
-        style="margin: 33px 0 0 100px"
-        v-model="activeName"
-        class="demo-tabs"
-      >
+      <el-tabs style="margin: 33px 0 0 100px" v-model="activeName" class="demo-tabs">
         <el-tab-pane label="常规登录" name="commonLogin">
           <div class="form" :model="form">
             <el-input v-model="form.name" placeholder="用户名" />
-            <el-input
-              v-model="form.pwd"
-              type="password"
-              placeholder="密码"
-              show-password
-            />
+            <el-input v-model="form.pwd" type="password" placeholder="密码" show-password />
             <div class="mt-4">
-              <el-input
-                v-model="form.answer"
-                placeholder="选填"
-                class="input-with-select"
-              >
+              <el-input v-model="form.answer" placeholder="选填" class="input-with-select">
                 <template #prepend>
-                  <el-select
-                    v-model="form.questionId"
-                    placeholder="密保问题"
-                    style="width: 115px"
-                  >
+                  <el-select v-model="form.questionId" placeholder="密保问题" style="width: 115px">
                     <el-option label="母亲的名字" value="1" />
                     <el-option label="爷爷的名字" value="2" />
                     <el-option label="父亲出生的城市" value="3" />
@@ -67,35 +42,21 @@
                 </template>
               </el-input>
             </div>
-            <el-button
-              :loading="loading"
-              @click="onSubmit"
-              class="login-btn"
-              type="primary"
-              >登录</el-button
-            >
+            <el-button :loading="loading" @click="onSubmit" class="login-btn" type="primary">登录</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="cookies批量登录" name="cookiesLogin">
           <div class="form">
-            <el-input
-              type="textarea"
-              v-model="cookiesStr"
-              placeholder="内容格式点github看说明"
-              :rows="7"
-              style="height: 156px"
-            />
-            <el-button
-              :loading="loading"
-              class="login-btn"
-              type="primary"
-              @click="onCookiesLogin"
-              >提交</el-button
-            >
+            <el-input type="textarea" v-model="cookiesStr" placeholder="内容格式点github看说明" :rows="7"
+              style="height: 156px" />
+            <el-button :loading="loading" class="login-btn" type="primary" @click="onCookiesLogin">提交</el-button>
           </div>
         </el-tab-pane>
       </el-tabs>
-            <el-button type="primary" plain class="sign-count"><a href="https://avhelper.com" target="_blank" style="text-decoration:none;" >点我人工找片</a></el-button>
+      <router-link to="/xlist"> <el-button @click="jumpWeb" type="primary" plain class="sign-count"><a
+            href="https://avhelper.com" target="_blank" style="text-decoration:none;">点我人工找片</a></el-button>
+      </router-link>
+
       <!-- <el-badge :max="999999" class="sign-count" :value="signCount">
         <el-button>昨日签到用户数</el-button>
       </el-badge> -->
@@ -107,196 +68,202 @@
 
 
 <script>
-import request from "@/utils/request";
-import config from "@/config/config";
-import { ElMessageBox } from "element-plus";
-// import { useStore } from "vuex";
-export default {
-  metaInfo: {
-    title: "98堂签到",
-    meta: [
-      {
-        name: "description",
-        content:
-          "提供免费98堂签到、女优识别、找番号服务。",
-      },
-      {
-        name: "keywords",
-        content: "女优识别,98堂签到",
-      },
-    ],
-  },
-  name: "LoginPanel",
-  props: {
-    msg: String,
-  },
-  data() {
-    return {
-      loading: false,
-      signCount: "",
-      activeName: "commonLogin",
-      cookiesStr: "",
-      form: {
-        name: "",
-        pwd: "",
-        questionId: "",
-        answer: "",
-      },
-    };
-  },
+  import request from "@/utils/request";
+  import config from "@/config/config";
+  import { ElMessageBox } from "element-plus";
+  // import { useStore } from "vuex";
+  export default {
+    metaInfo: {
+      title: "98堂签到",
+      meta: [
+        {
+          name: "description",
+          content:
+            "提供免费98堂签到、女优识别、找番号服务。",
+        },
+        {
+          name: "keywords",
+          content: "女优识别,98堂签到",
+        },
+      ],
+    },
+    name: "LoginPanel",
+    props: {
+      msg: String,
+    },
+    data() {
+      return {
+        loading: false,
+        signCount: "",
+        activeName: "commonLogin",
+        cookiesStr: "",
+        form: {
+          name: "",
+          pwd: "",
+          questionId: "",
+          answer: "",
+        },
+      };
+    },
 
-  mounted() {
-    // document.title = "98堂自动签到";
+    mounted() {
+      // document.title = "98堂自动签到";
 
-    // const store = useStore();
-    // console.log(store);
-    // store.commit('user/updateUname', 'Tom')
-    // console.log(store);
+      // const store = useStore();
+      // console.log(store);
+      // store.commit('user/updateUname', 'Tom')
+      // console.log(store);
 
-    request
-      .get(`/98t/usersCount`)
-      .then((res) => {
-        this.signCount = res.count;
-      })
-      .finally(() => {});
-  },
-
-  methods: {
-    onCookiesLogin() {
-      this.loading = true;
-      let data = new FormData();
-      data.append("cookies", this.cookiesStr);
       request
-        .post(`/98t/cookiesLogin`, data)
+        .get(`/98t/usersCount`)
         .then((res) => {
-          console.log(res);
-          ElMessageBox.alert(res.msg, res.title, {
-            confirmButtonText: "OK",
-            "show-close": false,
+          this.signCount = res.count;
+        })
+        .finally(() => { });
+    },
+
+    methods: {
+      onCookiesLogin() {
+        this.loading = true;
+        let data = new FormData();
+        data.append("cookies", this.cookiesStr);
+        request
+          .post(`/98t/cookiesLogin`, data)
+          .then((res) => {
+            console.log(res);
+            ElMessageBox.alert(res.msg, res.title, {
+              confirmButtonText: "OK",
+              "show-close": false,
+            });
+          })
+          .finally(() => {
+            this.loading = false;
           });
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
+      },
 
-    goGithub() {
-      // 跳转到github
-      if (this.activeName == "commonLogin")
-        window.open("https://github.com/super-upup/98tang");
-      else if (this.activeName == "cookiesLogin")
-        window.open("https://github.com/super-upup/98tang#cookies批量登录");
-    },
+      jumpWeb() {
+        // 跳转到avhelper
+        window.open("https://avhelper.com");
+      },
 
-    onSubmit() {
-      let data = new FormData();
-      data.append("username", this.form.name);
-      data.append("pwd", this.form.pwd);
-      if (this.form.answer) {
-        data.append("questionid", this.form.questionId);
-        data.append("answer", this.form.answer);
-      }
+      goGithub() {
+        // 跳转到github
+        if (this.activeName == "commonLogin")
+          window.open("https://github.com/super-upup/98tang");
+        else if (this.activeName == "cookiesLogin")
+          window.open("https://github.com/super-upup/98tang#cookies批量登录");
+      },
 
-      this.loading = true;
-      window.localStorage.setItem(
-        "user",
-        JSON.stringify({
-          username: this.form.name,
-          pwd: this.form.pwd,
-        })
-      );
-      request
-        .post(`/98t/commit`, data)
-        .then((res) => {
-          // console.log(res);
-          this.$router.push({
-            name: "SignPanel",
-            // params: { username: this.form.name, pwd: this.form.pwd },
+      onSubmit() {
+        let data = new FormData();
+        data.append("username", this.form.name);
+        data.append("pwd", this.form.pwd);
+        if (this.form.answer) {
+          data.append("questionid", this.form.questionId);
+          data.append("answer", this.form.answer);
+        }
+
+        this.loading = true;
+        window.localStorage.setItem(
+          "user",
+          JSON.stringify({
+            username: this.form.name,
+            pwd: this.form.pwd,
+          })
+        );
+        request
+          .post(`/98t/commit`, data)
+          .then((res) => {
+            // console.log(res);
+            this.$router.push({
+              name: "SignPanel",
+              // params: { username: this.form.name, pwd: this.form.pwd },
+            });
+          })
+          .finally(() => {
+            this.loading = false;
           });
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+      },
     },
-  },
-};
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.sign-count {
-  position: absolute;
-  right: 40px;
-  bottom: 20px;
-}
+  .sign-count {
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+  }
 
-.github {
-  position: absolute;
-  right: 23px;
-  top: 23px;
-  /* width: 37px;
+  .github {
+    position: absolute;
+    right: 23px;
+    top: 23px;
+    /* width: 37px;
   height: 37px; */
-  /* border-radius: 50%; */
-  display: flex;
-  /* flex-direction: column;
+    /* border-radius: 50%; */
+    display: flex;
+    /* flex-direction: column;
   justify-content: center; */
-  align-items: center;
-}
+    align-items: center;
+  }
 
-.login-btn {
-  margin-top: 20px;
-}
+  .login-btn {
+    margin-top: 20px;
+  }
 
-.el-input {
-  margin-top: 20px;
-}
+  .el-input {
+    margin-top: 20px;
+  }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 300px;
-}
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+  }
 
-.login-panel {
-  position: relative;
-  display: flex;
-  background-color: #fff;
-  padding: 50px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
+  .login-panel {
+    position: relative;
+    display: flex;
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
 
-.title {
-  position: absolute;
-  top: -15vh;
-  color: #fff;
-}
+  .title {
+    position: absolute;
+    top: -15vh;
+    color: #fff;
+  }
 
-.name1 {
-  font-size: 34px;
-}
-.name2 {
-  margin-top: 5px;
-  font-size: 14px;
-}
+  .name1 {
+    font-size: 34px;
+  }
 
-.login-container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 35vh;
-  position: relative;
-}
+  .name2 {
+    margin-top: 5px;
+    font-size: 14px;
+  }
 
-.bgone {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
+  .login-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 35vh;
+    position: relative;
+  }
+
+  .bgone {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 </style>

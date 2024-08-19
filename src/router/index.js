@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import SignPanel from '@/views/SignPanel.vue'
 import LoginPanel from '@/views/LoginPanel.vue'
+import xlist from '@/views/xlist.vue'
 
 export const routes = [
     {
@@ -16,7 +17,12 @@ export const routes = [
         path: '/SignPanel',
         name: 'SignPanel',
         component: SignPanel,
-    }
+    },
+    {
+        path: '/xlist',
+        name: 'xlist',
+        component: xlist,
+    },
 ]
 
 const router = createRouter({
