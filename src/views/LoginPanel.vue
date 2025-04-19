@@ -1,36 +1,49 @@
 <template>
-  <img class="bgone" src="@/assets/bg.jpg" />
-
-  <div class="login-container">
-    <div class="title">
-      <div class="name1">98堂自动签到系统</div>
-      <div class="name2">98tang auto sign system</div>
-    </div>
-
-    <div class="login-panel">
-      <div @click="goGithub" class="github">
-        <div style="font-size: 12px; color: grey; margin-right: 20px">
-          到github上Fork和Star就是我维护的动力
+  <div class="login-wrapper">
+    <div class="login-container">
+      <!-- 左侧装饰区域 -->
+      <div class="login-left">
+        <div class="brand">
+          <h1 class="brand-title">98堂</h1>
+          <p class="brand-subtitle">自动签到系统</p>
         </div>
-        <div>
-          <img style="height: 35px; width: 35px" alt="github" src="@/assets/github.svg" />
-          <div style="white-space: nowrap; font-size: 14px; margin-top: 3px">
-            源码/说明
-          </div>
+        <div class="decoration">
+          <img src="@/assets/decorate.png" alt="装饰图" />
         </div>
       </div>
 
-      <el-image style="width: 320px; height: 320px" :src="require('@/assets/decorate.png')" fit="cover"></el-image>
+      <!-- 右侧登录区域 -->
+      <div class="login-right">
+        <div class="login-header">
+          <h2 class="welcome-text">欢迎回来</h2>
+          <p class="login-desc">请登录您的账户继续使用自动签到服务</p>
+        </div>
 
-      <el-tabs style="margin: 33px 0 0 100px" v-model="activeName" class="demo-tabs">
-        <el-tab-pane label="常规登录" name="commonLogin">
-          <div class="form" :model="form">
-            <el-input v-model="form.name" placeholder="用户名" />
-            <el-input v-model="form.pwd" type="password" placeholder="密码" show-password />
-            <div class="mt-4">
-              <el-input v-model="form.answer" placeholder="选填" class="input-with-select">
-                <template #prepend>
-                  <el-select v-model="form.questionId" placeholder="密保问题" style="width: 115px">
+        <div class="login-form-container">
+          <el-tabs v-model="activeName" class="login-tabs">
+            <!-- 常规登录 -->
+            <el-tab-pane label="账号密码登录" name="commonLogin">
+              <div class="login-form">
+                <el-input 
+                  v-model="form.name" 
+                  placeholder="请输入用户名"
+                >
+                  <template #prefix>
+                    <el-icon><User /></el-icon>
+                  </template>
+                </el-input>
+                <el-input 
+                  v-model="form.pwd" 
+                  type="password" 
+                  placeholder="请输入密码" 
+                  show-password
+                >
+                  <template #prefix>
+                    <el-icon><Lock /></el-icon>
+                  </template>
+                </el-input>
+                <div class="security-question">
+                  <el-select v-model="form.questionId" placeholder="密保问题(选填)">
                     <el-option label="母亲的名字" value="1" />
                     <el-option label="爷爷的名字" value="2" />
                     <el-option label="父亲出生的城市" value="3" />
@@ -39,231 +52,335 @@
                     <el-option label="您最喜欢的餐馆名称" value="6" />
                     <el-option label="驾驶执照最后四位数字" value="7" />
                   </el-select>
-                </template>
-              </el-input>
-            </div>
-            <el-button :loading="loading" @click="onSubmit" class="login-btn" type="primary">登录</el-button>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="cookies批量登录" name="cookiesLogin">
-          <div class="form">
-            <el-input type="textarea" v-model="cookiesStr" placeholder="内容格式点github看说明" :rows="7"
-              style="height: 156px" />
-            <el-button :loading="loading" class="login-btn" type="primary" @click="onCookiesLogin">提交</el-button>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
-      <router-link to="/xlist"> <el-button @click="jumpWeb" type="primary" plain class="sign-count"><a
-            href="https://avhelper.com" target="_blank" style="text-decoration:none;">点我人工找片</a></el-button>
-      </router-link>
+                  <el-input 
+                    v-model="form.answer" 
+                    placeholder="密保答案" 
+                    class="security-answer"
+                  />
+                </div>
+                <el-button 
+                  :loading="loading" 
+                  @click="onSubmit" 
+                  class="login-btn" 
+                  type="primary"
+                >
+                  登录
+                </el-button>
+              </div>
+            </el-tab-pane>
 
-      <!-- <el-badge :max="999999" class="sign-count" :value="signCount">
-        <el-button>昨日签到用户数</el-button>
-      </el-badge> -->
+            <!-- cookies批量登录 -->
+            <el-tab-pane label="Cookies批量登录" name="cookiesLogin">
+              <div class="login-form">
+                <el-input 
+                  type="textarea" 
+                  v-model="cookiesStr" 
+                  placeholder="请输入cookies信息，格式请参考GitHub说明" 
+                  :rows="5"
+                />
+                <el-button 
+                  :loading="loading" 
+                  class="login-btn" 
+                  type="primary" 
+                  @click="onCookiesLogin"
+                >
+                  提交
+                </el-button>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+
+        <div class="login-footer">
+          <div class="github-link" @click="goGithub">
+            <img src="@/assets/github.svg" alt="GitHub" />
+            <span>查看源码和使用说明</span>
+          </div>
+          <div class="helper-link">
+            <router-link to="/xlist">
+              <el-button type="text" @click="jumpWeb">人工找片服务</el-button>
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- vue -->
 </template>
 
-
 <script>
-  import request from "@/utils/request";
-  import config from "@/config/config";
-  import { ElMessageBox } from "element-plus";
-  // import { useStore } from "vuex";
-  export default {
-    metaInfo: {
-      title: "98堂签到",
-      meta: [
-        {
-          name: "description",
-          content:
-            "提供免费98堂签到、女优识别、找番号服务。",
-        },
-        {
-          name: "keywords",
-          content: "女优识别,98堂签到",
-        },
-      ],
-    },
-    name: "LoginPanel",
-    props: {
-      msg: String,
-    },
-    data() {
-      return {
-        loading: false,
-        signCount: "",
-        activeName: "commonLogin",
-        cookiesStr: "",
-        form: {
-          name: "",
-          pwd: "",
-          questionId: "",
-          answer: "",
-        },
-      };
-    },
+import request from "@/utils/request";
+import { ElMessageBox } from "element-plus";
+import { User, Lock } from '@element-plus/icons-vue';
 
-    mounted() {
-      // document.title = "98堂自动签到";
+export default {
+  components: {
+    User,
+    Lock
+  },
+  metaInfo: {
+    title: "98堂签到",
+    meta: [
+      {
+        name: "description",
+        content: "提供免费98堂签到、女优识别、找番号服务。",
+      },
+      {
+        name: "keywords",
+        content: "女优识别,98堂签到",
+      },
+    ],
+  },
+  name: "LoginPanel",
+  props: {
+    msg: String,
+  },
+  data() {
+    return {
+      loading: false,
+      activeName: "commonLogin",
+      cookiesStr: "",
+      form: {
+        name: "",
+        pwd: "",
+        questionId: "",
+        answer: "",
+      },
+    };
+  },
 
-      // const store = useStore();
-      // console.log(store);
-      // store.commit('user/updateUname', 'Tom')
-      // console.log(store);
-
+  methods: {
+    onCookiesLogin() {
+      this.loading = true;
+      let data = new FormData();
+      data.append("cookies", this.cookiesStr);
       request
-        .get(`/98t/usersCount`)
+        .post(`/98t/cookiesLogin`, data)
         .then((res) => {
-          this.signCount = res.count;
+          ElMessageBox.alert(res.msg, res.title, {
+            confirmButtonText: "确定",
+            "show-close": false,
+          });
         })
-        .finally(() => { });
+        .finally(() => {
+          this.loading = false;
+        });
     },
 
-    methods: {
-      onCookiesLogin() {
-        this.loading = true;
-        let data = new FormData();
-        data.append("cookies", this.cookiesStr);
-        request
-          .post(`/98t/cookiesLogin`, data)
-          .then((res) => {
-            console.log(res);
-            ElMessageBox.alert(res.msg, res.title, {
-              confirmButtonText: "OK",
-              "show-close": false,
-            });
-          })
-          .finally(() => {
-            this.loading = false;
-          });
-      },
-
-      jumpWeb() {
-        // 跳转到avhelper
-        window.open("https://avhelper.com");
-      },
-
-      goGithub() {
-        // 跳转到github
-        if (this.activeName == "commonLogin")
-          window.open("https://github.com/super-upup/98tang");
-        else if (this.activeName == "cookiesLogin")
-          window.open("https://github.com/super-upup/98tang#cookies批量登录");
-      },
-
-      onSubmit() {
-        let data = new FormData();
-        data.append("username", this.form.name);
-        data.append("pwd", this.form.pwd);
-        if (this.form.answer) {
-          data.append("questionid", this.form.questionId);
-          data.append("answer", this.form.answer);
-        }
-
-        this.loading = true;
-        window.localStorage.setItem(
-          "user",
-          JSON.stringify({
-            username: this.form.name,
-            pwd: this.form.pwd,
-          })
-        );
-        request
-          .post(`/98t/commit`, data)
-          .then((res) => {
-            // console.log(res);
-            this.$router.push({
-              name: "SignPanel",
-              // params: { username: this.form.name, pwd: this.form.pwd },
-            });
-          })
-          .finally(() => {
-            this.loading = false;
-          });
-      },
+    jumpWeb() {
+      window.open("https://avhelper.com");
     },
-  };
+
+    goGithub() {
+      if (this.activeName == "commonLogin")
+        window.open("https://github.com/super-upup/98tang");
+      else if (this.activeName == "cookiesLogin")
+        window.open("https://github.com/super-upup/98tang#cookies批量登录");
+    },
+
+    onSubmit() {
+      let data = new FormData();
+      data.append("username", this.form.name);
+      data.append("pwd", this.form.pwd);
+      if (this.form.answer) {
+        data.append("questionid", this.form.questionId);
+        data.append("answer", this.form.answer);
+      }
+
+      this.loading = true;
+      window.localStorage.setItem(
+        "user",
+        JSON.stringify({
+          username: this.form.name,
+          pwd: this.form.pwd,
+        })
+      );
+      request
+        .post(`/98t/commit`, data)
+        .then((res) => {
+          this.$router.push({
+            name: "SignPanel",
+          });
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .sign-count {
-    position: absolute;
-    right: 40px;
-    bottom: 20px;
-  }
+.login-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+  padding: 20px;
+}
 
-  .github {
-    position: absolute;
-    right: 23px;
-    top: 23px;
-    /* width: 37px;
-  height: 37px; */
-    /* border-radius: 50%; */
-    display: flex;
-    /* flex-direction: column;
-  justify-content: center; */
-    align-items: center;
-  }
+.login-container {
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+  min-height: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
-  .login-btn {
-    margin-top: 20px;
-  }
+/* 左侧样式 */
+.login-left {
+  width: 45%;
+  background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
 
-  .el-input {
-    margin-top: 20px;
-  }
+.brand-title {
+  font-size: 36px;
+  margin: 0;
+  font-weight: 700;
+}
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 300px;
-  }
+.brand-subtitle {
+  font-size: 16px;
+  margin-top: 8px;
+  opacity: 0.9;
+}
 
-  .login-panel {
-    position: relative;
-    display: flex;
-    background-color: #fff;
-    padding: 50px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  }
+.decoration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  opacity: 0.7;
+}
 
-  .title {
-    position: absolute;
-    top: -15vh;
-    color: #fff;
-  }
+.decoration img {
+  width: 100%;
+}
 
-  .name1 {
-    font-size: 34px;
-  }
+/* 右侧样式 */
+.login-right {
+  width: 55%;
+  background-color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
 
-  .name2 {
-    margin-top: 5px;
-    font-size: 14px;
-  }
+.login-header {
+  margin-bottom: 30px;
+}
 
+.welcome-text {
+  font-size: 24px;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.login-desc {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.login-form-container {
+  flex: 1;
+}
+
+.login-tabs {
+  width: 100%;
+}
+
+.login-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.security-question {
+  display: flex;
+  gap: 12px;
+}
+
+.el-select {
+  width: 40%;
+}
+
+.security-answer {
+  width: 60%;
+}
+
+.login-btn {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+  border: none;
+}
+
+.login-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+  color: #666;
+}
+
+.github-link img {
+  width: 20px;
+  height: 20px;
+}
+
+.github-link:hover {
+  color: #5e72e4;
+}
+
+.helper-link a {
+  color: #5e72e4;
+  text-decoration: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
   .login-container {
-    display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    margin-top: 35vh;
-    position: relative;
   }
+  
+  .login-left, .login-right {
+    width: 100%;
+  }
+  
+  .login-left {
+    padding: 30px;
+    min-height: 200px;
+  }
+  
+  .decoration {
+    display: none;
+  }
+}
 
-  .bgone {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-  }
+/* 删除统计相关样式 */
+.stats, .stat-item, .stat-value, .stat-label {
+  display: none;
+}
 </style>
