@@ -92,14 +92,20 @@
         </div>
 
         <div class="login-footer">
-          <div class="github-link" @click="goGithub">
-            <img src="@/assets/github.svg" alt="GitHub" />
-            <span>查看源码和使用说明</span>
-          </div>
-          <div class="helper-link">
-            <router-link to="/xlist">
-              <el-button type="text" @click="jumpWeb">人工找片服务</el-button>
-            </router-link>
+          <div class="footer-links">
+            <div class="link-item github-link" @click="goGithub">
+              <img src="@/assets/github.svg" alt="GitHub" />
+              <span>查看源码和使用说明</span>
+            </div>
+            <div class="link-item telegram-link" @click="goTelegram">
+              <img src="@/assets/telegram.svg" alt="Telegram" />
+              <span>加入交流群</span>
+            </div>
+            <div class="link-item service-link">
+              <router-link to="/xlist">
+                <el-button type="text" @click="jumpWeb">人工找片服务</el-button>
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -175,6 +181,10 @@ export default {
         window.open("https://github.com/super-upup/98tang");
       else if (this.activeName == "cookiesLogin")
         window.open("https://github.com/super-upup/98tang#cookies批量登录");
+    },
+
+    goTelegram() {
+      window.open("https://t.me/+PiZnd8NIZSwwMDk5");
     },
 
     onSubmit() {
@@ -330,13 +340,17 @@ export default {
 
 .login-footer {
   margin-top: 40px;
+}
+
+.footer-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
   font-size: 14px;
 }
 
-.github-link {
+.link-item {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -344,16 +358,16 @@ export default {
   color: #666;
 }
 
-.github-link img {
+.github-link img, .telegram-link img {
   width: 20px;
   height: 20px;
 }
 
-.github-link:hover {
+.github-link:hover, .telegram-link:hover {
   color: #5e72e4;
 }
 
-.helper-link a {
+.service-link a {
   color: #5e72e4;
   text-decoration: none;
 }
@@ -376,6 +390,12 @@ export default {
   
   .decoration {
     display: none;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
   }
 }
 
