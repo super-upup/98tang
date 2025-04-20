@@ -35,7 +35,7 @@
                 <el-icon><Check /></el-icon>
               </div>
               <div class="stat-info">
-                <div class="stat-label">成功次数</div>
+                <div class="stat-label">成功天数</div>
                 <div class="stat-value">{{ successCount }}</div>
               </div>
             </div>
@@ -46,7 +46,7 @@
                 <el-icon><Warning /></el-icon>
               </div>
               <div class="stat-info">
-                <div class="stat-label">失败次数</div>
+                <div class="stat-label">失败天数</div>
                 <div class="stat-value">{{ failCount }}</div>
               </div>
             </div>
@@ -195,9 +195,73 @@ export default {
           
           // 更新统计数据
           this.totalSignCount = res.total_count || this.sign_history.length + sign_history.length;
-          this.successCount = res.success_count || sign_history.filter(item => item.status === '签到成功').length;
-          this.failCount = res.fail_count || sign_history.filter(item => item.status.includes('签到失败') || item.status === '签到异常').length;
           
+          // 如果服务器返回了统计数据，则直接使用
+          if (res.success_count !== undefined && res.fail_count !== undefined) {
+            this.successCount = res.success_count;
+            this.failCount = res.fail_count;
+          } else {
+            // 需要手动计算，并且包含所有已加载的历史记录
+            // 合并现有历史记录和新加载的记录进行统计
+            const allRecords = [...this.sign_history];
+            for (const record of sign_history) {
+              // 为新记录创建副本，因为我们需要原始时间戳进行日期计算
+              allRecords.push({...record});
+            }
+            
+            // 先收集所有日期的签到状态
+            const dateStatusMap = new Map();
+            
+            // 遍历所有记录，记录每天的签到状态
+            allRecords.forEach(item => {
+              // 获取时间戳（如果是已处理的记录则转换回时间戳）
+              let timestamp = item.sign_time;
+              if (typeof timestamp === 'string' && timestamp.includes('年')) {
+                // 已格式化的日期，需要提取日期部分
+                const dateParts = timestamp.split(' ')[0].match(/(\d+)年(\d+)月(\d+)日/);
+                if (dateParts) {
+                  const date = new Date(
+                    parseInt(dateParts[1]), 
+                    parseInt(dateParts[2]) - 1, 
+                    parseInt(dateParts[3])
+                  );
+                  timestamp = date.getTime() / 1000;
+                }
+              }
+              
+              const date = new Date(timestamp * 1000);
+              const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+              
+              // 如果当天有成功记录，标记为成功
+              if (item.status === '签到成功') {
+                dateStatusMap.set(dateStr, 'success');
+              } 
+              // 如果当天没有记录过状态或之前记录为失败，且当前为失败，标记为失败
+              else if (item.status.includes('签到失败') || item.status === '签到异常') {
+                if (!dateStatusMap.has(dateStr) || dateStatusMap.get(dateStr) !== 'success') {
+                  dateStatusMap.set(dateStr, 'fail');
+                }
+              }
+            });
+            
+            // 计算成功天数
+            let successDays = 0;
+            // 计算失败天数
+            let failDays = 0;
+            
+            dateStatusMap.forEach(status => {
+              if (status === 'success') {
+                successDays++;
+              } else if (status === 'fail') {
+                failDays++;
+              }
+            });
+            
+            this.successCount = successDays;
+            this.failCount = failDays;
+          }
+          
+          // 处理新加载的记录时间格式
           for (let i = 0, len = sign_history.length; i < len; i++) {
             const date = new Date(sign_history[i].sign_time * 1000);
             const year = date.getFullYear();
