@@ -46,7 +46,7 @@
                 <el-icon><Warning /></el-icon>
               </div>
               <div class="stat-info">
-                <div class="stat-label">失败天数</div>
+                <div class="stat-label">未签到天数</div>
                 <div class="stat-value">{{ failCount }}</div>
               </div>
             </div>
@@ -59,7 +59,6 @@
       <template #header>
         <div class="history-header">
           <h3>签到历史记录</h3>
-          <el-button type="primary" size="small" @click="getSignLi" :loading="loading">刷新</el-button>
         </div>
       </template>
       
@@ -244,21 +243,65 @@ export default {
               }
             });
             
+            // 找出最早和最晚的日期
+            let earliestDate = new Date();
+            let latestDate = new Date(0);
+            
+            allRecords.forEach(item => {
+              let timestamp = item.sign_time;
+              if (typeof timestamp === 'string' && timestamp.includes('年')) {
+                const dateParts = timestamp.split(' ')[0].match(/(\d+)年(\d+)月(\d+)日/);
+                if (dateParts) {
+                  const date = new Date(
+                    parseInt(dateParts[1]), 
+                    parseInt(dateParts[2]) - 1, 
+                    parseInt(dateParts[3])
+                  );
+                  timestamp = date.getTime() / 1000;
+                }
+              }
+              
+              const date = new Date(timestamp * 1000);
+              if (date < earliestDate) earliestDate = new Date(date);
+              if (date > latestDate) latestDate = new Date(date);
+            });
+            
+            // 重置时间为当天开始
+            earliestDate.setHours(0, 0, 0, 0);
+            latestDate.setHours(0, 0, 0, 0);
+            
+            // 计算日期范围内的所有天数
+            const totalDays = Math.floor((latestDate - earliestDate) / (24 * 60 * 60 * 1000)) + 1;
+            
+            // 遍历日期范围内的每一天，检查是否有签到记录
+            let currentDate = new Date(earliestDate);
+            for (let i = 0; i < totalDays; i++) {
+              const dateStr = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+              
+              // 如果该日期没有记录，标记为未签到
+              if (!dateStatusMap.has(dateStr)) {
+                dateStatusMap.set(dateStr, 'missing');
+              }
+              
+              // 前进到下一天
+              currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
             // 计算成功天数
             let successDays = 0;
-            // 计算失败天数
-            let failDays = 0;
+            // 计算未签到天数（失败 + 缺失）
+            let missedDays = 0;
             
             dateStatusMap.forEach(status => {
               if (status === 'success') {
                 successDays++;
-              } else if (status === 'fail') {
-                failDays++;
+              } else if (status === 'fail' || status === 'missing') {
+                missedDays++;
               }
             });
             
             this.successCount = successDays;
-            this.failCount = failDays;
+            this.failCount = missedDays;
           }
           
           // 处理新加载的记录时间格式
