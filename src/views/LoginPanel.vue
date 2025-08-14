@@ -66,6 +66,11 @@
                 >
                   登录
                 </el-button>
+                <!-- 登录等待提示 -->
+                <div v-if="loading" class="loading-tip">
+                  <el-icon class="loading-icon"><Loading /></el-icon>
+                  <span>正在登录中，请耐心等待，最多可能需要2分钟...</span>
+                </div>
               </div>
             </el-tab-pane>
 
@@ -86,6 +91,11 @@
                 >
                   提交
                 </el-button>
+                <!-- Cookies登录等待提示 -->
+                <div v-if="loading" class="loading-tip">
+                  <el-icon class="loading-icon"><Loading /></el-icon>
+                  <span>正在登录中，请耐心等待，最多可能需要2分钟...</span>
+                </div>
               </div>
             </el-tab-pane>
           </el-tabs>
@@ -116,12 +126,13 @@
 <script>
 import request from "@/utils/request";
 import { ElMessageBox } from "element-plus";
-import { User, Lock } from '@element-plus/icons-vue';
+import { User, Lock, Loading } from '@element-plus/icons-vue';
 
 export default {
   components: {
     User,
-    Lock
+    Lock,
+    Loading
   },
   metaInfo: {
     title: "98堂签到",
@@ -336,6 +347,33 @@ export default {
   margin-top: 16px;
   background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
   border: none;
+}
+
+.loading-tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #f0f9ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  color: #1e40af;
+  font-size: 14px;
+}
+
+.loading-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .login-footer {

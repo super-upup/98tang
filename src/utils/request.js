@@ -7,13 +7,23 @@ import { ElMessageBox, ElMessage } from 'element-plus'
 const service = axios.create({
     baseURL: process.env.VUE_APP_BASE_URL, // url = base url + request url
     // withCredentials: true, // send cookies when cross-domain requests
-    timeout: 12000 // request timeout
+    timeout: 12000 // default request timeout (12 seconds)
 })
 
 // request interceptor
 service.interceptors.request.use(
     config => {
         // do something before request is sent
+
+        // 为登录接口设置特殊的超时时间（2分钟）
+        const loginEndpoints = ['/98t/commit', '/98t/cookiesLogin']
+        const isLoginRequest = loginEndpoints.some(endpoint => 
+            config.url && config.url.includes(endpoint)
+        )
+        
+        if (isLoginRequest) {
+            config.timeout = 120000 // 2 minutes timeout for login requests
+        }
 
         // if (store.getters.token) {
         //     // let each request carry token
