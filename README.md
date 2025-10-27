@@ -1,5 +1,5 @@
 # 98tang/98堂自动签到系统
-### <font color="red">有問題提ISSUES，telegram群回復更快。</font>
+### <font color="red">有問題提ISSUES，telegram群組回復更快。</font>
 
 
 ## 作者搭建好的（更新时间2025年11月）
