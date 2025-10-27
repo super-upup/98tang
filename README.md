@@ -1,8 +1,8 @@
 # 98tang/98堂自动签到系统
-### <font color="red">有問題提ISSUES，一般會回復。</font>
+### <font color="red">有問題提ISSUES，telegram群回復更快。</font>
 
 
-## 作者搭建好的（更新时间2024年5月）
+## 作者搭建好的（更新时间2025年11月）
 http://www.superupup.top
 
 ## 人工找片，人工女优识别
