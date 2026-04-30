@@ -195,7 +195,7 @@ export default {
     },
 
     goTelegram() {
-      window.open("https://t.me/+PiZnd8NIZSwwMDk5");
+      window.open("https://t.me/+DeDN36c9WHJhMjlh");
     },
 
     onSubmit() {
