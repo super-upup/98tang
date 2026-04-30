@@ -11,8 +11,6 @@
 ## 作者搭建好的（更新时间2025年11月）
 http://www.superupup.top
 
-## 人工找片，人工女优识别
-https://avhelper.com
 
 **开发不易，给个star、fork是我维护的动力！！**
 
